@@ -18,9 +18,9 @@ app.get('/rides', (req, res) => {
 })
 
 const scrapeSamferdaFor = (requesting, res) => {
-  const url = 'http://www.samferda.net/'
+  const url = 'https://www.samferda.net/'
 
-  request(url, (error, response, body) => {
+  request({url, headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36'}}, (error, response, body) => {
     if (error) {
       return res.status(500).json({ error: `${url} not responding correctly...` })
     }
